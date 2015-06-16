@@ -1,0 +1,17 @@
+{
+  "name": "swaggertron",
+  "version": "0.0.1",
+  "description": "Swagger UI packaged as electron app",
+  "main": "main.js",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "swagger-ui": "^2.1.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^4.1.2"
+  },
+  "scripts": {
+    "pack-osx": "rm -rf Swaggertron.app && electron-packager ./ Swaggertron --platform=darwin --arch=x64 --version=0.28.1 --icon=swagger.icns"
+  }
+}
