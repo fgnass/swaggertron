@@ -1,5 +1,6 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
+var Menu = require('menu');
 
 // Report crashes to our server.
 require('crash-reporter').start();
@@ -21,6 +22,25 @@ app.on('ready', function() {
     width: 1024,
     height: 768
   });
+
+  var template = [{
+    label: 'Swaggertron',
+    submenu: [
+      { label: 'Quit', accelerator: 'Command+Q', click: function() { app.quit(); }}
+    ]}, {
+    label: 'Edit',
+    submenu: [
+      { label: 'Undo', accelerator: 'Command+Z', selector: 'undo:' },
+      { label: 'Redo', accelerator: 'Shift+Command+Z', selector: 'redo:' },
+      { type: 'separator' },
+      { label: 'Cut', accelerator: 'Command+X', selector: 'cut:' },
+      { label: 'Copy', accelerator: 'Command+C', selector: 'copy:' },
+      { label: 'Paste', accelerator: 'Command+V', selector: 'paste:' },
+      { label: 'Select All', accelerator: 'Command+A', selector: 'selectAll:' }
+    ]}
+  ];
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 
   //mainWindow.loadUrl('file://' + require.resolve('swagger-ui/dist/index.html'));
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
